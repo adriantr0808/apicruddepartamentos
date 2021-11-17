@@ -15,7 +15,8 @@
       <td>{{d.localidad}}</td>
       <td>
         <a class='btn btn-success me-2' [routerLink]="['/modificardepartamento', d.numero]">Modificar</a>
-        <a class='btn btn-danger me-2' [routerLink]="['/eliminardepartamento', d.numero]">X</a>
+        <a (click)='elimnarDepartamento()' [routerLink]="['/eliminardepartamento', d.numero]"
+          class=' btn btn-danger me-2'>X</a>
       </td>
 
     </tr>

@@ -8,9 +8,11 @@ import { EliminardepartamentoComponent } from './components/eliminardepartamento
 const appRoutes: Routes = [
     { path: "", component: ListadepartamentosComponent },
     { path: "listadepartamentos", component: ListadepartamentosComponent },
+    { path: "eliminardepartamento/:num", component: ListadepartamentosComponent },
     { path: "nuevodepartamento", component: NuevodepartamentoComponent },
     { path: "modificardepartamento/:num", component: ModificardepartamentoComponent },
-    { path: "eliminardepartamento/:num", component: EliminardepartamentoComponent },
+
+
 ];
 
 export const appRoutingProviders: any[] = [];
