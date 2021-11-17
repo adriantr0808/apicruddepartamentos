@@ -14,20 +14,22 @@ export class NuevodepartamentoComponent implements OnInit {
   @ViewChild('cajanumero') cajanumero!: ElementRef;
   @ViewChild('cajanombre') cajanombre!: ElementRef;
   @ViewChild('cajalocalidad') cajalocalidad!: ElementRef;
-  constructor(private _service: ServiceDepartamento) { }
+  constructor(private _service: ServiceDepartamento, private _router: Router) { }
 
   ngOnInit(): void {
 
   }
 
   insertarDepartamento(): void {
-    var num = this.cajanumero.nativeElement.value;
+    var num = parseInt(this.cajanumero.nativeElement.value);
     var nom = this.cajanombre.nativeElement.value;
     var loc = this.cajalocalidad.nativeElement.value;
 
     var dept = new Departamento(num, nom, loc);
 
-    this._service.postDepartamentos(dept);
+    this._service.postDepartamentos(dept).subscribe(res => {
+      this._router.navigate(['/']);
+    });
 
   }
 

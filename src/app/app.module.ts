@@ -8,13 +8,17 @@ import { MenuComponent } from './components/menu/menu.component';
 import { ListadepartamentosComponent } from './components/listadepartamentos/listadepartamentos.component';
 import { ServiceDepartamento } from './services/departamento.service';
 import { NuevodepartamentoComponent } from './components/nuevodepartamento/nuevodepartamento.component';
+import { ModificardepartamentoComponent } from './components/modificardepartamento/modificardepartamento.component';
+import { EliminardepartamentoComponent } from './components/eliminardepartamento/eliminardepartamento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ListadepartamentosComponent,
-    NuevodepartamentoComponent
+    NuevodepartamentoComponent,
+    ModificardepartamentoComponent,
+    EliminardepartamentoComponent
   ],
   imports: [
     BrowserModule,
