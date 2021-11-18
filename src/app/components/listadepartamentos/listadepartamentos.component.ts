@@ -4,6 +4,7 @@ import { Departamento } from 'src/app/models/departamento';
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { Router } from '@angular/router';
+import { ThrowStmt } from '@angular/compiler';
 @Component({
   selector: 'app-listadepartamentos',
   templateUrl: './listadepartamentos.component.html',
@@ -14,10 +15,6 @@ export class ListadepartamentosComponent implements OnInit {
   constructor(private _service: ServiceDepartamento, private _activateRoute: ActivatedRoute,
     private _router: Router) { }
 
-  ngOnInit(): void {
-    this.cargarDepartamentos();
-  }
-
 
   cargarDepartamentos(): void {
     this._service.getDepartamentos().subscribe(res => {
@@ -27,16 +24,25 @@ export class ListadepartamentosComponent implements OnInit {
 
   }
 
-  elimnarDepartamento(): void {
+  eliminarDepartamentoBoton(iddepartamento: number): void {
+    this._service.deleteDepartamento(iddepartamento).subscribe(res => {
+      this.cargarDepartamentos();
+    });
+  }
+
+  ngOnInit(): void {
+    //Para recibir parametros, es un codigo aislado y asincrono
     this._activateRoute.params.subscribe((params: Params) => {
       if (params['num'] != null) {
         var id = parseInt(params['num']);
-        this._service.deleteDepartamento(id).subscribe(res => {
-          this.cargarDepartamentos();
-        });
-      }
+        this.eliminarDepartamentoBoton(id);
 
+      }
     });
+
+    this.cargarDepartamentos();
+
+
   }
 
 }
